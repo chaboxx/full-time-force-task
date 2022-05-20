@@ -1,6 +1,6 @@
 This is a project based on NODEJS 18.0.1 (https://nodejs.org/en).
 
-## Getting Started
+## Run Server
 
 First, run the server:
 
@@ -16,6 +16,7 @@ The entrance of the aplication is `index.js`.
 If you want to run in development:
 
 ```bash
+npm i -D nodemon
+# then
 npm run dev
-
 ```
