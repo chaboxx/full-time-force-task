@@ -4,15 +4,20 @@ const { getUrlData } = require("../utils/getUrlData");
 
 const getCommitData = async ( req , res) =>{
   
-  const { linkGitHubRepo }  = req.query;
+  const { linkGitHubRepo , page }  = req.query;
+  //LIMIT NUMBER OF COMMITS
+  const limitData = 6;
   
   try {
 
     if ( !linkGitHubRepo ){
-      const data = await axiosConfig({
+      let data = await axiosConfig({
         owner : "chaboxx",
         repo : "Rappidin",
       });
+
+      //PAGINATION SPLICE
+      data = data.splice(limitData*(page-1),limitData*page);
       
       res.code(200);
       return {
@@ -25,10 +30,13 @@ const getCommitData = async ( req , res) =>{
 
     const { owner , repo } =getUrlData(linkGitHubRepo);
     
-    const data = await axiosConfig({
+    let data = await axiosConfig({
       owner,
       repo,
     });
+    
+    //PAGINATION SPLICE
+    data = data.splice(limitData*(page-1),limitData*page);
 
     res.code(200);
     return {
