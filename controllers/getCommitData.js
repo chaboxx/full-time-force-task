@@ -1,35 +1,49 @@
 const { axiosConfig } = require("../utils/axios");
-const { getUserRepo } = require("../utils/getUserRepo");
+const { getUrlData } = require("../utils/getUrlData");
 
 
 const getCommitData = async ( req , res) =>{
-
+  
   const { linkGitHubRepo }  = req.query;
-  //https://github.com/chaboxx/Rappidin
+  
+  try {
 
-  if ( !linkGitHubRepo ){
-    const resp = await axiosConfig({
-      owner : "chaboxx",
-      repo : "Rappidin",
-    });
-    
-    res.code(200);
-    return {
-      resp
+    if ( !linkGitHubRepo ){
+      const data = await axiosConfig({
+        owner : "chaboxx",
+        repo : "Rappidin",
+      });
+      
+      res.code(200);
+      return {
+        ok : true,
+        msg : "Get Data Repo",
+        data,
+      }
+      
     }
 
-  }
-  const { owner , repo } =getUserRepo(linkGitHubRepo);
-  const resp = await axiosConfig({
-    owner,
-    repo,
-  });
-  
+    const { owner , repo } =getUrlData(linkGitHubRepo);
+    
+    const data = await axiosConfig({
+      owner,
+      repo,
+    });
 
-
-  res.code(200);
-  return {
-    resp
+    res.code(200);
+    return {
+      ok : true,
+      msg : "Get Data Repo",
+      data,
+    }
+    
+  } catch (error) {
+    console.log(error);
+    res.code(500)
+    return {
+      ok : false,
+      msg : "Error in the server"
+    }
   }
 }
 

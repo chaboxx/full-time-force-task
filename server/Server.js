@@ -18,7 +18,7 @@ class Server {
   init(){
     
     this.app.listen(this.port,()=>{
-      console.log("Servidor corriendo en el puerto ",this.port);
+      console.log("Server running on port ",this.port);
     })
   }
   middlewares(){
@@ -26,7 +26,7 @@ class Server {
   }
   routes(){
 
-    this.app.get("/",getCommitData)
+    this.app.get("/",getCommitData);
     
   }
 

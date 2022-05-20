@@ -1,21 +1,18 @@
 
 
-const getUserRepo = ( url ) =>{
+const getUrlData = ( url ) =>{
 
-  if ( !url ){
-    return null;
-  }
   const match = url.match(
     /^https?:\/\/(www\.)?github.com\/(?<owner>[\w.-]+)\/(?<repo>[\w.-]+)/
   );
 
   if (!match || !( match.groups?.owner && match.groups?.repo )) {
-    return null;
+    throw new Error("Incorrect Url");
   }
   
   return {
     owner : match.groups.owner,
-    repo : match.groups.repo
+    repo : match.groups.repo,
   };
   
 
@@ -23,5 +20,5 @@ const getUserRepo = ( url ) =>{
 
 
 module.exports = {
-  getUserRepo,
+  getUrlData,
 }
