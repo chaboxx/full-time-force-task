@@ -6,8 +6,9 @@ const getCommitData = async ( req , res) =>{
   
   const { linkGitHubRepo , page }  = req.query;
   //LIMIT NUMBER OF COMMITS
+  console.log({linkGitHubRepo,page})
   const limitData = 6;
-  
+
   try {
 
     if ( !linkGitHubRepo ){
@@ -17,8 +18,8 @@ const getCommitData = async ( req , res) =>{
       });
 
       //PAGINATION SPLICE
-      data = data.splice(limitData*(page-1),limitData*page);
-      
+      data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
+      console.log({data});
       res.code(200);
       return {
         ok : true,
@@ -36,7 +37,7 @@ const getCommitData = async ( req , res) =>{
     });
     
     //PAGINATION SPLICE
-    data = data.splice(limitData*(page-1),limitData*page);
+    data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
 
     res.code(200);
     return {
