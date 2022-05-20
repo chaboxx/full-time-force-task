@@ -2,19 +2,20 @@
 const axios = require("axios");
 
 const apiConection = axios.create({
-  baseUrl: "https://api.github.com/repos",
+  baseURL: "https://api.github.com",
   headers : {
-    "Content-type" : "application/json",
     "Accept": "application/vnd.github.v3+json",
-
   }
-})
+});
 
-const axiosConfig = async ( ) =>{
+const axiosConfig = async ({ owner , repo }) =>{
+  
   try {
-    const resp = await apiConection.get("/chaboxx/Rappidin/commits");
-    console.log({resp: resp.data});
+    //GET
+    const resp = await apiConection.get(`/repos/${owner}/${repo}/commits`);
     
+    return resp.data;
+
   } catch (error) {
     console.log(error);
 

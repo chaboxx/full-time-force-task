@@ -22,20 +22,7 @@ class Server {
     })
   }
   middlewares(){
-    this.app.register(require('@fastify/cors'), { 
-      // put your options here
-    })
-    // this.app.register(require("@fastify/cors"), {
-    //   origin: true,
-    //   allowedHeaders: [
-    //       'Origin', 
-    //       'X-Requested-With', 
-    //       'Accept', 
-    //       'Content-Type', 
-    //       'Authorization'
-    //   ],
-    //   methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
-    // });
+    this.app.register(require('@fastify/cors'));
   }
   routes(){
 
