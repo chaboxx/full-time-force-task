@@ -1,15 +1,25 @@
 This is a project based on NODEJS 18.0.1 (https://nodejs.org/en).
 
-## Run Server
+## Start the project:
+First, clone the repository:
+```bash
+git clone https://github.com/chaboxx/full-time-force-taskh
+cd full-time-force-task
+```
 
-First, run the server:
+Second, install the dependencies:
 
+```bash
+npm install
+```
+
+Finally , run the server (PORT 4000 !)
 ```bash
 npm start
 ```
-Now open in your browser : [http://localhost:4000](http://localhost:4000) .
+MAKE SURE THAT UR GITHUB API RATE LIMIT WAS NOT EXCEDED
 
-The entrance of the aplication is `index.js`.
+Now open in your browser : [http://localhost:4000](http://localhost:4000) .
 
 
 If you want to run in development:
