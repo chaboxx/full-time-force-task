@@ -6,15 +6,12 @@ const axios = require("axios");
 const apiConnection = axios.create({
   baseURL: "https://api.github.com",
   headers : {
-    // "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
     "Accept": "application/vnd.github.v3+json",
   },
-  // auth :{
-    
-  //   username: process.env.USERNAME_GITHUB,
-  //   password: process.env.PASSWORD_GITHUB,
-
-  // }
+  auth :{
+    username: "de0f96cefe2d22cf464a",
+    password: "d7ba2fe35105c014c69ddb2a7f698718e7d96bac",
+  }
 });
 
 const axiosConfig = async ({ owner , repo }) =>{

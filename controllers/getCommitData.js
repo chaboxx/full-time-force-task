@@ -5,8 +5,8 @@ const { getUrlData } = require("../utils/getUrlData");
 const getCommitData = async ( req , res) =>{
   
   const { linkGitHubRepo , page }  = req.query;
+  
   //LIMIT NUMBER OF COMMITS
-
   const limitData = 6;
 
   try {
@@ -17,9 +17,10 @@ const getCommitData = async ( req , res) =>{
         repo : "full-time-force-task",
       });
       //PAGINATION SPLICE
-      let dataLength = data.length+1;
-      data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
-      console.log({data});
+      let dataLength = data.length;
+      
+      data = data.slice(limitData*(parseInt(page)-1),limitData*parseInt(page));
+      
       
       res.code(200);
       return {
@@ -37,17 +38,18 @@ const getCommitData = async ( req , res) =>{
       owner,
       repo,
     });
+      
     
     let dataLength = data.length;
     //PAGINATION SPLICE
-    data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
+    data = data.slice(limitData*(parseInt(page)-1),limitData*parseInt(page));
 
     res.code(200);
     return {
       ok : true,
       msg : "Get Data Repo",
       data,
-      dataLength
+      dataLength,
     }
     
   } catch (error) {
