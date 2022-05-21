@@ -7,7 +7,6 @@ First, run the server:
 ```bash
 npm start
 ```
-
 Now open in your browser : [http://localhost:4000](http://localhost:4000) .
 
 The entrance of the aplication is `index.js`.
