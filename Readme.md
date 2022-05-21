@@ -3,7 +3,7 @@ This is a project based on NODEJS 18.0.1 (https://nodejs.org/en).
 ## Start the project:
 First, clone the repository:
 ```bash
-git clone https://github.com/chaboxx/full-time-force-taskh
+git clone https://github.com/chaboxx/full-time-force-task
 cd full-time-force-task
 ```
 
