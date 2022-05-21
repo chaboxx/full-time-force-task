@@ -6,7 +6,7 @@ const getCommitData = async ( req , res) =>{
   
   const { linkGitHubRepo , page }  = req.query;
   //LIMIT NUMBER OF COMMITS
-  console.log({linkGitHubRepo,page})
+
   const limitData = 6;
 
   try {
@@ -14,17 +14,19 @@ const getCommitData = async ( req , res) =>{
     if ( !linkGitHubRepo ){
       let data = await axiosConfig({
         owner : "chaboxx",
-        repo : "Rappidin",
+        repo : "full-time-force-task",
       });
-
       //PAGINATION SPLICE
+      let dataLength = data.length+1;
       data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
       console.log({data});
+      
       res.code(200);
       return {
         ok : true,
         msg : "Get Data Repo",
         data,
+        dataLength,
       }
       
     }
@@ -36,6 +38,7 @@ const getCommitData = async ( req , res) =>{
       repo,
     });
     
+    let dataLength = data.length;
     //PAGINATION SPLICE
     data = data.splice(limitData*(parseInt(page)-1),limitData*parseInt(page));
 
@@ -44,6 +47,7 @@ const getCommitData = async ( req , res) =>{
       ok : true,
       msg : "Get Data Repo",
       data,
+      dataLength
     }
     
   } catch (error) {

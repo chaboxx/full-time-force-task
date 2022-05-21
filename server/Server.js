@@ -1,6 +1,7 @@
-
-
 const fastify = require("fastify");
+
+const path = require('path');
+
 const { getCommitData } = require("../controllers/getCommitData");
 
 class Server {
@@ -23,10 +24,15 @@ class Server {
   }
   middlewares(){
     this.app.register(require('@fastify/cors'));
+   
+    this.app.register(require('@fastify/static'), {
+      root: path.join(__dirname, '../public/'),
+    })
+    
   }
   routes(){
 
-    this.app.get("/",getCommitData);
+    this.app.get("/get-data",getCommitData);
     
   }
 
