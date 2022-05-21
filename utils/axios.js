@@ -9,8 +9,8 @@ const apiConnection = axios.create({
     "Accept": "application/vnd.github.v3+json",
   },
   auth :{
-    username: "de0f96cefe2d22cf464a",
-    password: "d7ba2fe35105c014c69ddb2a7f698718e7d96bac",
+    username: process.env.GITHUB_CLIENT_ID,
+    password: process.env.GITHUB_CLIENT_SECRET,
   }
 });
 
